@@ -49,3 +49,15 @@ model Fornecedor {
   cep             String
   celular         String
 }
+
+model Produto {
+  id              String @id @default(auto())   @map("_id") @db.ObjectId
+  nome            String
+  marca           String
+  especificacao   String
+  unidade_medida  String
+  preco_unitario  Float 
+  qtd_estoque     Float
+  categoria_id    String      @db.ObjectId
+  categoria       Categoria     @relation(fields: [categoria_id], references: [id])
+}
